@@ -1,8 +1,4 @@
-/*
-This code was developed by @ArinSime and AgilityFeat for an O'Reilly video course on WebRTC basics.  
 
-
-*/
 
 //Server.js:  This is the core Node.js configuration code, and also used for
 //setting up signaling channels to be used by socket.io

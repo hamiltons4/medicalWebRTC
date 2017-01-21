@@ -1,8 +1,4 @@
-/*
-This code was developed by @ArinSime and AgilityFeat for an O'Reilly video course on WebRTC basics.  
 
-
-*/
 
 //App.js:  This file contains the code necessary for basic flow of our application
 
@@ -60,17 +56,7 @@ requestDoctor.addEventListener('click', function(ev){
 	ev.preventDefault();
 }, false);
 
-/*
-//This code should be removed, it is only for clickable prototype purposes
-//This allows you to click on the patient progress bar and advance to the 
-//video screen without a doctor.
-waitingForDoctorProgress.addEventListener('click', function(ev){
-	requestDoctorForm.style.display = 'none';
-	waitingForDoctor.style.display = 'none';
-	doctorListing.style.display = 'block';
-	ev.preventDefault();
-}, false);
-*/
+
 
 //Enter the application as a doctor and progress to the sign up form
 enterAsDoctor.addEventListener('click', function(ev){
@@ -109,6 +95,11 @@ callDoctor.addEventListener('click', function(ev){
 	//Send a signal that the patient is calling
 	patientUserName = patientName.value || "no name";
 	io.emit('signal', {"user_type": "patient", "user_name": patientUserName, "user_data": "calling doctor", "command": "calldoctor"});
+	console.log("patient" + patientUserName + " is calling");
+	
+	//Kick off the WebRTC signaling
+	//Setup the RTC Peer Connection object
+	if (!rtcPeerConn) startSignaling();
 	
 	ev.preventDefault();
 }, false);
